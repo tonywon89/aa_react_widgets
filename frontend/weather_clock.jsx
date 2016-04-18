@@ -7,9 +7,6 @@ var WeatherClock = React.createClass({
 
   componentDidMount: function () {
     this.interval = setInterval(this.tick, 1000);
-
-
-
   },
 
   componentWillUnmount: function () {

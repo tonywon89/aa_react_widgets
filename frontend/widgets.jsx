@@ -7,7 +7,7 @@ var Autocomplete = require('./autocomplete');
 var Widgets = React.createClass({
   getInitialState: function () {
     return {info: [{title: "Weather Clock", content: <WeatherClock/>},
-                   {title: "Do Re Mi", content: "Fa So La Ti Da"},
+                   {title: "Autocomplete", content: <Autocomplete names={this.names}/>},
                    {title: "Ice cream", content: "Chocolate chip"}]};
   },
 
@@ -17,7 +17,6 @@ var Widgets = React.createClass({
     return(
       <div>
         <Tabs information={this.state.info}/>
-        <Autocomplete names={this.names}/>
       </div>
     );
   }
