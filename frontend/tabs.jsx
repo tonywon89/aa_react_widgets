@@ -1,5 +1,14 @@
 var React = require('react');
 
+var Header = React.createClass({
+  render: function() {
+    return (
+      <h1 onClick={this.props.clickCallback}>{this.props.title}</h1>
+    );
+  }
+});
+
+
 var Tabs = React.createClass({
   getInitialState: function() {
     return {index: 0};
@@ -12,28 +21,29 @@ var Tabs = React.createClass({
   render: function () {
     var self = this;
 
+    var articles = this.props.information.map(function(tab, idx) {
+      var content;
+      if (self.state.index === idx) {
+        content = self.props.information[self.state.index].content;
+      } else {
+        content = "";
+      }
+
+      return (
+        <div>
+          <Header clickCallback={self.clicked.bind(self, idx)}
+                  title={tab.title}/>
+
+          <article>{content}</article>
+        </div>
+      );
+    });
+
+
     return (
       <div>
         <ul>
-          {this.props.information.map(function(tab, idx) {
-            var content;
-            if (self.state.index === idx) {
-              content = self.props.information[self.state.index].content;
-            } else {
-              content = "";
-            }
-
-            return (
-              <div>
-                <h1 key={idx} onClick={self.clicked.bind(self, idx)}>
-                  {tab.title}
-                </h1>
-
-                <article>{content}</article>
-              </div>
-            );
-          })}
-
+          {articles}
         </ul>
 
       </div>
