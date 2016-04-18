@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Tabs = require('./tabs');
 var WeatherClock = require('./weather_clock');
+var Autocomplete = require('./autocomplete');
 
 var Widgets = React.createClass({
   getInitialState: function () {
@@ -10,10 +11,13 @@ var Widgets = React.createClass({
                    {title: "Ice cream", content: "Chocolate chip"}]};
   },
 
+  names: ["Tony", "Tommy", "Alexander", "Alejango", "Alex", "Jack"],
+
   render: function() {
     return(
       <div>
         <Tabs information={this.state.info}/>
+        <Autocomplete names={this.names}/>
       </div>
     );
   }
