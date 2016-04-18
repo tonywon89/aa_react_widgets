@@ -17,7 +17,6 @@ var WeatherClock = React.createClass({
   },
 
   tick: function () {
-
     this.setState({time: new Date()});
     var self = this;
 
@@ -37,7 +36,7 @@ var WeatherClock = React.createClass({
         if (request.status >= 200 && request.status < 300) {
           self.setState(
             {
-              temperature: response.main.temp,
+              temperature: response.main.temp + "K",
               weather: response.weather[0].description
             }
           );
@@ -50,10 +49,13 @@ var WeatherClock = React.createClass({
 
   render: function () {
     var time = this.state.time;
-    console.log(this.state.temperature);
-    console.log(this.state.weather);
+
     return (
-      <div>{time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds()}</div>
+      <div>
+        <p>Time: {time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds()}</p>
+        <p>Weather: {this.state.weather}</p>
+        <p>Temperature: {this.state.temperature}</p>
+      </div>
     );
 
   }
