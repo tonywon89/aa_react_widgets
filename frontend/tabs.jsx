@@ -43,11 +43,9 @@ var Tabs = React.createClass({
     });
 
     return (
-      <div>
-        <ul>
-          {articles}
-        </ul>
-      </div>
+      <ul>
+        {articles}
+      </ul>
     );
   }
 
